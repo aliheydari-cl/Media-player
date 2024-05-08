@@ -28,9 +28,9 @@ import QtMultimedia
                     {
                         currentIndex --
 
-                        temp = listVideo.listModel.get(currentIndex).path
+                        temp = playlist.listModel.get(currentIndex).path
 
-                        mediaPlayer.source = listVideo.listModel.get(currentIndex).path
+                        mediaPlayer.source = playlist.listModel.get(currentIndex).path
                         mediaPlayer.play()
                     }
                 }
@@ -61,15 +61,15 @@ import QtMultimedia
                 onClicked: {
                     timer.restart()
 
-                    if(currentIndex < listVideo.listModel.rowCount() - 1 && currentIndex != -1)
+                    if(currentIndex < playlist.listModel.rowCount() - 1 && currentIndex != -1)
                     {
                         currentIndex ++
 
-                        temp = listVideo.listModel.get(currentIndex).path
+                        temp = playlist.listModel.get(currentIndex).path
 
                         timer.restart()
 
-                        mediaPlayer.source = listVideo.listModel.get(currentIndex).path
+                        mediaPlayer.source = playlist.listModel.get(currentIndex).path
                         mediaPlayer.play()
                     }
                 }

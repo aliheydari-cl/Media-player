@@ -15,6 +15,7 @@ Item {
             anchors.verticalCenter: parent.verticalCenter
 
             onClicked: {
+                timer.restart()
                 audioOutput.volume = 0
                 soundSlider.value = 0
             }
@@ -34,7 +35,11 @@ Item {
 
             }
 
-            onMoved: audioOutput.volume = value
+            onMoved: {
+                timer.restart()
+                audioOutput.volume = value
+            }
+
 
         }
 
@@ -47,6 +52,7 @@ Item {
             anchors.verticalCenter: parent.verticalCenter
 
             onClicked: {
+                timer.restart()
                 audioOutput.volume = 1
                 soundSlider.value = 1
             }

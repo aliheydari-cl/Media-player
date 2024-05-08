@@ -14,7 +14,6 @@ ApplicationWindow {
     minimumHeight: 400
     minimumWidth: 640
 
-
     background: Rectangle {
         anchors.fill: parent
         color: "black"
@@ -57,6 +56,12 @@ ApplicationWindow {
 
     Item {
         id: footer
+
+        Rectangle {
+            anchors.fill: footer
+            color: "black"
+            opacity: 0.4
+        }
 
         anchors.bottom: parent.bottom
         anchors.left: parent.left
