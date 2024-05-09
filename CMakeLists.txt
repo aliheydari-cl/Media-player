@@ -5,6 +5,7 @@ project(MediaPlayer VERSION 0.1 LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(Qt6 6.4 REQUIRED COMPONENTS Quick)
+find_package(Qt6 REQUIRED COMPONENTS Sql)
 
 qt_standard_project_setup()
 
@@ -26,6 +27,8 @@ qt_add_qml_module(appMediaPlayer
         QML_FILES TimeSlider.qml
         QML_FILES ScreenSetting.qml
         QML_FILES Playlist.qml
+
+        SOURCES database.h database.cpp
 )
 
 set_target_properties(appMediaPlayer PROPERTIES
@@ -39,6 +42,9 @@ set_target_properties(appMediaPlayer PROPERTIES
 target_link_libraries(appMediaPlayer
     PRIVATE Qt6::Quick
 )
+
+target_link_libraries(appMediaPlayer PRIVATE Qt6::Sql)
+
 
 include(GNUInstallDirs)
 install(TARGETS appMediaPlayer

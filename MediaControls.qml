@@ -42,6 +42,11 @@ import QtMultimedia
                 icon.source: mediaPlayer.playbackState === MediaPlayer.PlayingState ? "icon/pause.png" : "icon/play.png"
                 icon.color: "white"
                 onClicked: {
+                    if(currentIndex === -1 && database.playlist.length > 0)
+                    {
+                        mediaPlayer.source =  playlist.listModel.get(0).path
+                        currentIndex = 0
+                    }
                     timer.restart()
 
                     if(mediaPlayer.playbackState === MediaPlayer.PlayingState)

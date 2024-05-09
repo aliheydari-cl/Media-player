@@ -36,6 +36,9 @@ Dialog {
                 anchors.right: parent.right
 
                 onClicked: {
+                    database.deleteFromDatabase(listModel.get(index).path)
+                    console.log(listModel.get(index).path)
+
                     listModel.remove(index)
                 }
             }

@@ -3,6 +3,7 @@ import QtQuick.Controls.Material
 import QtMultimedia
 import QtQuick.Dialogs
 import QtQuick.Layouts
+import Database 1.0
 
 ApplicationWindow {
     id: window
@@ -13,6 +14,10 @@ ApplicationWindow {
 
     minimumHeight: 400
     minimumWidth: 640
+
+    Database {
+        id:database
+    }
 
     background: Rectangle {
         anchors.fill: parent
@@ -177,6 +182,8 @@ ApplicationWindow {
             timer.restart()
             playlist.listModel.append({path: selectedFile})
             mediaPlayer.source = selectedFile
+            database.addToDatabase(selectedFile)
+            console.log(selectedFile)
             currentIndex ++
             mediaPlayer.play()
         }
@@ -229,6 +236,10 @@ ApplicationWindow {
     Component.onCompleted: {
         footerHeight = footer.height
         timeSliderHeight = timeSlider.height
+
+        database.getDatabase()
+        for (var i = 0; i < database.playlist.length; i++)
+            playlist.listModel.append({path: database.playlist[i]})
     }
 
     ParallelAnimation {
