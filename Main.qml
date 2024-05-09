@@ -92,7 +92,6 @@ ApplicationWindow {
                     timer.restart()
                     mediaPlayer.position -= 10000
                 }
-
             }
 
             ToolButton{

@@ -18,7 +18,7 @@ qt_add_qml_module(appMediaPlayer
     QML_FILES
         Main.qml
 
-        RESOURCES icon/back.png icon/Hsound.png icon/Lsound.png icon/next.png icon/pause.png icon/play.png
+        RESOURCES icon/back.png icon/Hsound.png icon/Lsound.png icon/next.png icon/pause.png icon/play.png icon/delete.png
         RESOURCES icon/crop.png icon/fit.png icon/addFile.png icon/forward.png icon/replay.png icon/menu.png icon/list.png
 
         QML_FILES MediaControls.qml
