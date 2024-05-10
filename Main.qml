@@ -180,10 +180,9 @@ ApplicationWindow {
         ]
         onAccepted: {
             timer.restart()
-            playlist.listModel.append({path: selectedFile})
+            playlist.listModel.append({path: selectedFile.toString()})
             mediaPlayer.source = selectedFile
             database.addToDatabase(selectedFile)
-            console.log(selectedFile)
             currentIndex ++
             mediaPlayer.play()
         }

@@ -37,9 +37,10 @@ Dialog {
 
                 onClicked: {
                     database.deleteFromDatabase(listModel.get(index).path)
-                    console.log(listModel.get(index).path)
 
                     listModel.remove(index)
+                    if(listModel.count === 0)
+                        currentIndex = -1
                 }
             }
         }
