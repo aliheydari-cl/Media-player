@@ -22,7 +22,13 @@ Item {
             text: formatTime(mediaPlayer.position)
             anchors.verticalCenter: parent.verticalCenter
             font.bold: true
-            color: "white"
+            color: {
+                if(settings.darkMode)
+                    "white"
+                else
+                    "black"
+            }
+
         }
 
         Slider {
@@ -49,7 +55,13 @@ Item {
             text: formatTime(mediaPlayer.duration)
             anchors.verticalCenter: parent.verticalCenter
             font.bold: true
-            color: "white"
+            color: {
+                if(settings.darkMode)
+                    "white"
+                else
+                    "black"
+            }
+
         }
     }
 }

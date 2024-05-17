@@ -3,6 +3,7 @@ import QtQuick.Controls.Material
 import QtMultimedia
 import QtQuick.Dialogs
 import QtQuick.Layouts
+import QtCore
 import Database 1.0
 
 ApplicationWindow {
@@ -11,6 +12,12 @@ ApplicationWindow {
     height: 480
     visible: true
     title: qsTr("Media Player")
+    color: {
+        if(settings.darkMode)
+            "black"
+        else
+            "white"
+    }
 
     minimumHeight: 400
     minimumWidth: 640
@@ -19,11 +26,14 @@ ApplicationWindow {
         id:database
     }
 
-    background: Rectangle {
-        anchors.fill: parent
-        color: "black"
+    Settings{
+        id: settings
+        property int sliderValue: 5000
+        property bool darkMode
+        property double soundValue: 0.5
+    }
 
-        MouseArea {
+    background: MouseArea {
             anchors.fill: parent
             enabled: mediaPlayer.playbackState === MediaPlayer.PlayingState
 
@@ -41,7 +51,6 @@ ApplicationWindow {
                 timer.restart()
                 showControls.start()
             }
-        }
     }
 
     MediaPlayer {
@@ -57,6 +66,7 @@ ApplicationWindow {
 
     AudioOutput {
         id: audioOutput
+        volume: settings.soundValue
     }
 
     Item {
@@ -90,22 +100,32 @@ ApplicationWindow {
             spacing: 0
 
             ToolButton{
+                id: replayButton
                 icon.source: "icon/replay.png"
                 icon.color: "white"
 
                 onClicked: {
                     timer.restart()
                     mediaPlayer.position -= 10000
+
+                    p1.target = replayButton
+                    p2.target = replayButton
+                    anim.start()
                 }
             }
 
-            ToolButton{
+            ToolButton {
+                id: forwardButton
                 icon.source: "icon/forward.png"
                 icon.color: "white"
 
                 onClicked: {
                     timer.restart()
                     mediaPlayer.position += 10000
+
+                    p1.target = forwardButton
+                    p2.target = forwardButton
+                    anim.start()
                 }
             }
         }
@@ -138,12 +158,19 @@ ApplicationWindow {
                         mediaPlayer.playbackRate = 0.5
                     else
                         mediaPlayer.playbackRate += 0.5;
+
+                    text.text = mediaPlayer.playbackRate + "x"
+
+                    p1.target = text
+                    p2.target = text
+                    anim.start()
                 }
             }
 
             Text {
+                id: text
                 anchors.centerIn: speedControl
-                text: mediaPlayer.playbackRate + "x"
+                text: mediaPlayer.playbackRate.toFixed(1) + "x"
                 font.bold: true
                 color: "white"
             }
@@ -190,7 +217,16 @@ ApplicationWindow {
 
     Playlist {
         id:playlist
-        width: parent.width / 1.5
+        width: parent.width / 2
+
+        x: Math.round((window.width - width) / 2)
+        y: Math.round(window.height / 6)
+
+        height: 300
+    }
+
+    Setting {
+        id: setting
 
         x: Math.round((window.width - width) / 2)
         y: Math.round(window.height / 6)
@@ -204,23 +240,33 @@ ApplicationWindow {
         MenuItem {
             text: "add video"
             icon.source: "icon/addFile.png"
-
             onTriggered: fileDialog.open()
-
         }
 
         MenuItem {
             text: "show playlist"
             icon.source: "icon/list.png"
-
             onTriggered: playlist.open()
+        }
+
+        MenuItem {
+            text: "Setting"
+            icon.source: "icon/setting.png"
+
+            onTriggered: setting.open()
         }
     }
 
     ToolButton {
         id:addFileButton
         icon.source: "icon/menu.png"
-        icon.color: "white"
+        icon.color: {
+            if(settings.darkMode)
+                "white"
+            else
+                "black"
+        }
+
         anchors.right: parent.right
         onClicked: {
             timer.restart()
@@ -240,6 +286,27 @@ ApplicationWindow {
         for (var i = 0; i < database.playlist.length; i++)
             playlist.listModel.append({path: database.playlist[i]})
     }
+
+    SequentialAnimation {
+        id: anim
+
+        PropertyAnimation {
+            id: p1
+            property: "scale"
+            to: 1.2
+            duration: 100
+            easing.type: Easing.InOutQuad
+        }
+
+        PropertyAnimation {
+            id: p2
+            property: "scale"
+            to: 1.0
+            duration: 100
+            easing.type: Easing.InOutQuad
+        }
+    }
+
 
     ParallelAnimation {
         id: hideControls
@@ -331,7 +398,7 @@ ApplicationWindow {
 
     Timer {
         id: timer
-        interval: 5000
+        interval: settings.sliderValue
         repeat: true
         running: mediaPlayer.playbackState === MediaPlayer.PlayingState
 

@@ -27,8 +27,11 @@ qt_add_qml_module(appMediaPlayer
         QML_FILES TimeSlider.qml
         QML_FILES ScreenSetting.qml
         QML_FILES Playlist.qml
+        QML_FILES Setting.qml
 
         SOURCES database.h database.cpp
+        RESOURCES icon/setting.png
+        RESOURCES icon/time.png icon/dark-mode.png
 )
 
 set_target_properties(appMediaPlayer PROPERTIES

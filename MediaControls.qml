@@ -3,8 +3,28 @@ import QtQuick.Controls.Material
 import QtQuick.Layouts
 import QtMultimedia
 
- Item {
-     property var temp
+Item {
+    property var temp
+
+    SequentialAnimation {
+        id: anim
+
+        PropertyAnimation {
+            id: p1
+            property: "scale"
+            to: 1.2
+            duration: 100
+            easing.type: Easing.InOutQuad
+        }
+
+        PropertyAnimation {
+            id: p2
+            property: "scale"
+            to: 1.0
+            duration: 100
+            easing.type: Easing.InOutQuad
+        }
+    }
 
     Item {
         anchors.fill: parent
@@ -22,6 +42,10 @@ import QtMultimedia
                 icon.width: 20
                 icon.height: 20
                 onClicked: {
+                    p1.target = backButton
+                    p2.target = backButton
+                    anim.start()
+
                     timer.restart()
 
                     if(currentIndex > 0)
@@ -41,7 +65,11 @@ import QtMultimedia
                 id: playButton
                 icon.source: mediaPlayer.playbackState === MediaPlayer.PlayingState ? "icon/pause.png" : "icon/play.png"
                 icon.color: "white"
-                onClicked: {
+                onClicked: {               
+                    p1.target = playButton
+                    p2.target = playButton
+                    anim.start()
+
                     if(currentIndex === -1 && playlist.listModel.count > 0)
                     {
                         mediaPlayer.source =  playlist.listModel.get(0).path
@@ -64,6 +92,10 @@ import QtMultimedia
                 icon.width: 20
                 icon.height: 20
                 onClicked: {
+                    p1.target = nextButton
+                    p2.target = nextButton
+                    anim.start()
+
                     timer.restart()
 
                     if(currentIndex < playlist.listModel.rowCount() - 1 && currentIndex != -1)
