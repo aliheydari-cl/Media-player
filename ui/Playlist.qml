@@ -44,7 +44,7 @@ Dialog {
 
             ToolButton {
                 id: deleteButton
-                icon.source: "icon/delete.png"
+                icon.source: "qrc:/icon/delete.png"
                 width: 40
 
                 anchors.verticalCenter: parent.verticalCenter

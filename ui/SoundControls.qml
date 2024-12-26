@@ -9,7 +9,7 @@ Item {
         ToolButton {
             id: lsoundButton
             width: 25
-            icon.source: "icon/Lsound"
+            icon.source: "qrc:/icon/Lsound.png"
             icon.color: "white"
             icon.width: 30
             icon.height: 30
@@ -47,7 +47,7 @@ Item {
         ToolButton {
             id: hsoundButton
             width: 25
-            icon.source: "icon/Hsound"
+            icon.source: "qrc:/icon/Hsound.png"
             icon.color: "white"
             icon.width: 30
             icon.height: 30

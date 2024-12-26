@@ -1,6 +1,28 @@
 <RCC>
     <qresource prefix="/">
-        <file>icons/pause.png</file>
-        <file>icons/play.png</file>
+        <file>icon/addFile.png</file>
+        <file>icon/back.png</file>
+        <file>icon/crop.png</file>
+        <file>icon/dark-mode.png</file>
+        <file>icon/delete.png</file>
+        <file>icon/fit.png</file>
+        <file>icon/forward.png</file>
+        <file>icon/Hsound.png</file>
+        <file>icon/list.png</file>
+        <file>icon/Lsound.png</file>
+        <file>icon/menu.png</file>
+        <file>icon/next.png</file>
+        <file>icon/pause.png</file>
+        <file>icon/play.png</file>
+        <file>icon/replay.png</file>
+        <file>icon/setting.png</file>
+        <file>icon/time.png</file>
+        <file>ui/Main.qml</file>
+        <file>ui/MediaControls.qml</file>
+        <file>ui/Playlist.qml</file>
+        <file>ui/ScreenSetting.qml</file>
+        <file>ui/Setting.qml</file>
+        <file>ui/SoundControls.qml</file>
+        <file>ui/TimeSlider.qml</file>
     </qresource>
 </RCC>

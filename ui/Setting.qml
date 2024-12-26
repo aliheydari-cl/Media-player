@@ -13,7 +13,7 @@ Dialog {
         RowLayout {
 
             Image {
-                source: "icon/dark-mode.png"
+                source: "qrc:/icon/dark-mode.png"
                 sourceSize.width: 20
                 sourceSize.height: 20
             }
@@ -42,7 +42,7 @@ Dialog {
         RowLayout {
 
             Image {
-                source: "icon/time.png"
+                source: "qrc:/icon/time.png"
                 sourceSize.width: 20
                 sourceSize.height: 20
             }

@@ -37,7 +37,7 @@ Item {
             ToolButton {
                 id: backButton
 
-                icon.source: "icon/back"
+                icon.source: "qrc:/icon/back.png"
                 icon.color: "white"
                 icon.width: 20
                 icon.height: 20
@@ -63,7 +63,7 @@ Item {
 
             ToolButton {
                 id: playButton
-                icon.source: mediaPlayer.playbackState === MediaPlayer.PlayingState ? "icon/pause.png" : "icon/play.png"
+                icon.source: mediaPlayer.playbackState === MediaPlayer.PlayingState ? "qrc:/icon/pause.png" : "qrc:/icon/play.png"
                 icon.color: "white"
                 onClicked: {               
                     p1.target = playButton
@@ -87,7 +87,7 @@ Item {
             ToolButton {
                 id: nextButton
 
-                icon.source: "icon/next"
+                icon.source: "qrc:/icon/next.png"
                 icon.color: "white"
                 icon.width: 20
                 icon.height: 20

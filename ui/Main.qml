@@ -33,11 +33,11 @@ ApplicationWindow {
         property double soundValue: 0.5
     }
 
-    background: MouseArea {
-            anchors.fill: parent
-            enabled: mediaPlayer.playbackState === MediaPlayer.PlayingState
+    background: MouseArea {      
+        anchors.fill: parent
+        enabled: mediaPlayer.playbackState === MediaPlayer.PlayingState
 
-            onClicked: {
+        onClicked: {
                 timer.restart()
 
                 if(footer.opacity === 1)
@@ -101,7 +101,7 @@ ApplicationWindow {
 
             ToolButton{
                 id: replayButton
-                icon.source: "icon/replay.png"
+                icon.source: "qrc:/icon/replay.png"
                 icon.color: "white"
 
                 onClicked: {
@@ -116,7 +116,7 @@ ApplicationWindow {
 
             ToolButton {
                 id: forwardButton
-                icon.source: "icon/forward.png"
+                icon.source: "qrc:/icon/forward.png"
                 icon.color: "white"
 
                 onClicked: {
@@ -239,19 +239,19 @@ ApplicationWindow {
         x: parent.width
         MenuItem {
             text: "add video"
-            icon.source: "icon/addFile.png"
+            icon.source: "qrc:/icon/addFile.png"
             onTriggered: fileDialog.open()
         }
 
         MenuItem {
             text: "show playlist"
-            icon.source: "icon/list.png"
+            icon.source: "qrc:/icon/list.png"
             onTriggered: playlist.open()
         }
 
         MenuItem {
             text: "Setting"
-            icon.source: "icon/setting.png"
+            icon.source: "qrc:/icon/setting.png"
 
             onTriggered: setting.open()
         }
@@ -259,7 +259,7 @@ ApplicationWindow {
 
     ToolButton {
         id:addFileButton
-        icon.source: "icon/menu.png"
+        icon.source: "qrc:/icon/menu.png"
         icon.color: {
             if(settings.darkMode)
                 "white"

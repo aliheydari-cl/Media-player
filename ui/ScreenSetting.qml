@@ -3,7 +3,7 @@ import QtQuick.Controls.Material
 import QtMultimedia
 
 ToolButton {
-    icon.source: videoOutput.fillMode === VideoOutput.PreserveAspectFit ? "icon/fit.png" : "icon/crop.png"
+    icon.source: videoOutput.fillMode === VideoOutput.PreserveAspectFit ? "qrc:/icon/fit.png" : "qrc:/icon/crop.png"
     icon.color: "white"
 
     onClicked: {

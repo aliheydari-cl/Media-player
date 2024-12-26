@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
     qmlRegisterType<database>("Database", 1, 0, "Database");
 
     QQmlApplicationEngine engine;
-    const QUrl url(QStringLiteral("qrc:/MediaPlayer/Main.qml"));
+    const QUrl url(QStringLiteral("qrc:/ui/Main.qml"));
     QObject::connect(
         &engine,
         &QQmlApplicationEngine::objectCreationFailed,
